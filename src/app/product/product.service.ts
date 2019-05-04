@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BaseUrls } from '../app.config';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
 import 'rxjs/add/operator/do'
 import 'rxjs/add/observable/throw';
-import { BaseUrls } from '../app.config';
 
 @Injectable()
 export class ProductService {
@@ -24,7 +24,7 @@ export class ProductService {
       .catch(this.handleError)
   }
 
-  public saveProduct(storeId: number, entity: any) {
+  public saveProduct(entity: any) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')
       .set('Authorization', localStorage.getItem("token"));
 
