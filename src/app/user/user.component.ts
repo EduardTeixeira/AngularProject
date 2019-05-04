@@ -19,7 +19,6 @@ export class UserComponent implements OnInit {
 
   constructor(
     public snackBar: MatSnackBar,
-    public dialog: MatDialog,
     public _service: UserService) {
 
   }
