@@ -70,6 +70,6 @@ NgxMaskModule.forRoot()
   ],
   entryComponents: [],
   declarations: [UserComponent],
-  providers: [UserService]
+  providers: []
 })
 export class UserModule { }

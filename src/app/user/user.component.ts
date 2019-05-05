@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
   public entityUser: User[] = [];
 
   constructor(
+    public dialog: MatDialog,
     public snackBar: MatSnackBar,
     public _service: UserService) {
 
