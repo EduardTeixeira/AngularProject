@@ -1,8 +1,7 @@
-import { UserService } from './user.service';
-import { UserRoutingModule } from './user-routing.module';
+import { UserService } from './../user/user.service';
+import { UserComponent } from './../user/user.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserComponent } from './user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap';
 
@@ -29,12 +28,17 @@ import {
   MatRadioModule,
   MatFormField,
   MatFormFieldModule,
+  MatToolbarModule,
 } from '@angular/material';
-import { UserDialog } from './user-dialog';
+import { LoginComponent } from './login.component';
+import { LoginRoutingModule } from './login-routing.module';
+import { RouterModule } from '@angular/router';
+import { AppRoutes } from '../app-routing.module';
 
 @NgModule({
   imports: [
-    UserRoutingModule,
+    LoginRoutingModule,
+    MatFormField,
     MatFormFieldModule,
     MatInputModule,
     CommonModule,
@@ -56,12 +60,13 @@ import { UserDialog } from './user-dialog';
     MatTableModule,
     MatTabsModule,
     MatRadioModule,
-    MatFormField,
-    TooltipModule.forRoot(),
+    MatToolbarModule,
     ModalModule.forRoot(),
+    TooltipModule.forRoot(),
+    RouterModule.forChild(AppRoutes),
   ],
-  entryComponents: [UserComponent, UserDialog],
-  declarations: [UserComponent, UserDialog],
+  entryComponents: [],
+  declarations: [LoginComponent],
   providers: [UserService]
 })
-export class UserModule { }
+export class LoginModule { }

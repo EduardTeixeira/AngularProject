@@ -18,8 +18,8 @@ export class UserComponent implements OnInit {
   public entityUser: User[] = [];
 
   constructor(
-    public snackBar: MatSnackBar,
     public dialog: MatDialog,
+    public snackBar: MatSnackBar,
     public _service: UserService) {
 
   }
@@ -28,15 +28,54 @@ export class UserComponent implements OnInit {
 
   }
 
-  public getUser() {
+  public search() {
+
+    this.blockUI.start('Carregando...');
+
+    this._service.getUser().subscribe(
+      (data: any[]) => {
+        if (data) {
+          this.entityUser = data;
+        } else {
+          this.entityUser = [];
+        }
+        this.blockUI.stop();
+      }
+    );
 
   }
 
-  public saveUser() {
+  public saveUser(item) {
+
+    this.blockUI.start('Carregando...');
+
+    this._service.saveUser(item).subscribe(
+      data => {
+        this.search()
+        this.openSnackBar('Ação aplicada com sucesso.', 'Sucesso');
+        this.blockUI.stop();
+      },
+      error => {
+        this.openSnackBar('Não conseguimos aplicar a ação desejada. Estamos trabalhando pra resolver o problema.', 'Erro');
+        this.blockUI.stop();
+      });
 
   }
 
-  public deleteUser() {
+  public deleteUser(item) {
+
+    this.blockUI.start('Carregando...');
+
+    this._service.deleteUser(item.id).subscribe(
+      data => {
+        this.search()
+        this.openSnackBar('Ação aplicada com sucesso.', 'Sucesso');
+        this.blockUI.stop();
+      },
+      error => {
+        this.openSnackBar('Não conseguimos aplicar a ação desejada. Estamos trabalhando pra resolver o problema.', 'Erro');
+        this.blockUI.stop();
+      });
 
   }
 

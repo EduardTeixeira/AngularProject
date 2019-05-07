@@ -1,0 +1,140 @@
+<div class="relative">
+    <div class="form-bg">
+        <div fxLayout="row" fxLayoutAlign="center start" class="pt-2">
+            <div fxLayout="column" fxFlex.xl="40" fxFlex.lg="40" fxFlex.md="50" fxFlex.sm="80" fxFlex.xs="90">
+                <mat-card class="login-session">
+                    <div>
+                        <h2 class="base-border">Cadastro de Usuário</h2>
+                        <p>Insira seus dados</p>
+
+                        <form #form="ngForm">
+
+                            <div fxLayout="column" fxLayoutAlign="start stretch">
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Nome da loja" type="text" name="name" required
+                                        [(ngModel)]="entityStore.name">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="URL da loja" type="text" name="url" required
+                                        [(ngModel)]="entityStore.url">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="E-mail principal para contato (usuário)" type="text"
+                                        name="emailContact" required [(ngModel)]="entityStore.emailContact">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="E-mail do financeiro" type="text" name="emailFinancial"
+                                        required [(ngModel)]="entityStore.emailFinancial">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Cep" type="text" name="cep" required
+                                        [(ngModel)]="entityAddress.zipcode" (blur)="getAddress()">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Rua" type="text" name="street" required
+                                        [(ngModel)]="entityAddress.street">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Complemento" type="text" name="complement"
+                                        [(ngModel)]="entityAddress.complement">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Número" type="text" name="number" required
+                                        [(ngModel)]="entityAddress.number" maxlength="6">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Bairro" type="text" name="neighborhood" required
+                                        [(ngModel)]="entityAddress.neighborhood">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Cidade" type="text" name="city" required
+                                        [(ngModel)]="entityAddress.city">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Estado" type="text" name="state" required
+                                        [(ngModel)]="entityAddress.state" maxlength="2">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="País" type="text" name="country" required
+                                        [(ngModel)]="entityAddress.country">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="CNPJ / CPF" type="text" name="cnpjCpf" required
+                                        [(ngModel)]="entityStore.cnpjCpf">
+                                </mat-form-field>
+
+                                <div style="width: 100%">
+                                    <mat-form-field class="my-flex-column">
+                                        <input matInput placeholder="DDD" type="text" name="prefixTelephone" required
+                                            [(ngModel)]="entityStore.prefixTelephone" maxlength="3">
+                                    </mat-form-field>
+
+                                    <mat-form-field class="ml-xs mr-xs my-flex-column">
+                                        <input matInput placeholder="Telefone de contato" type="text" name="telephone"
+                                            required [(ngModel)]="entityStore.telephone" maxlength="9">
+                                    </mat-form-field>
+                                </div>
+
+                                <mat-form-field>
+                                    <input matInput placeholder="Senha" type="password" name="password" required
+                                        [(ngModel)]="entityStore.password">
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%" class="mb-1">
+                                    <input matInput placeholder="Confirmação de senha" type="password"
+                                        name="confirmPassword" required [(ngModel)]="entityStore.passwordConfirm">
+                                </mat-form-field>
+
+                                <div class="my-flex-line width-full">
+                                    <mat-form-field class="ml-xs mr-xs my-flex-column">
+                                        <input matInput placeholder="Cupom de desconto" type="text" name="coupon"
+                                            [(ngModel)]="entityCoupon.name" maxlength="30">
+                                    </mat-form-field>
+                                    <div class="ml-xs mr-xs " fxFlex>
+                                        <button mat-flat-button (click)="checkCoupon()"
+                                            style="background-color: #4CAF50;">
+                                            VERIFICAR CUPOM
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="verifyCoupon == true">
+                                    <label *ngIf="entityCoupon.fee == null" class="color-red">
+                                        Cupom inválido!
+                                    </label>
+
+                                    <label *ngIf="entityCoupon.fee != null" class="color-red">
+                                        Cupom válido! Valor da mensalidade R$ {{ entityCoupon.fee }}
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <button class="btn-login-margin mat-primary" mat-raised-button
+                                    (click)="register()">CADASTRAR</button>
+                                <button class="btn-login-margin mat-primary" mat-raised-button (click)="login()">JÁ SOU
+                                    CLIENTE</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

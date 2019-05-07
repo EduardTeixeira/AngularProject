@@ -28,15 +28,54 @@ export class ProductComponent implements OnInit {
 
   }
 
-  public getProduct(){
+  public search() {
+
+    this.blockUI.start('Carregando...');
+
+    this._service.getProduct().subscribe(
+      (data: any[]) => {
+        if (data) {
+          this.entityProduct = data;
+        } else {
+          this.entityProduct = [];
+        }
+        this.blockUI.stop();
+      }
+    );
 
   }
 
-  public saveProduct(){
+  public saveProduct(item) {
+
+    this.blockUI.start('Carregando...');
+
+    this._service.saveProduct(item).subscribe(
+      data => {
+        this.search()
+        this.openSnackBar('Ação aplicada com sucesso.', 'Sucesso');
+        this.blockUI.stop();
+      },
+      error => {
+        this.openSnackBar('Não conseguimos aplicar a ação desejada. Estamos trabalhando pra resolver o problema.', 'Erro');
+        this.blockUI.stop();
+      });
 
   }
 
-  public deleteProduct(){
+  public deleteProduct(item) {
+
+    this.blockUI.start('Carregando...');
+
+    this._service.deleteProduct(item.id).subscribe(
+      data => {
+        this.search()
+        this.openSnackBar('Ação aplicada com sucesso.', 'Sucesso');
+        this.blockUI.stop();
+      },
+      error => {
+        this.openSnackBar('Não conseguimos aplicar a ação desejada. Estamos trabalhando pra resolver o problema.', 'Erro');
+        this.blockUI.stop();
+      });
 
   }
 

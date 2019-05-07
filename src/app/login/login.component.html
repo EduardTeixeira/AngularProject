@@ -1,0 +1,33 @@
+<div class="relative">
+  <div class="form-bg">
+    <div style="text-align: center; margin-top: 20%;">
+      <div>
+        <mat-card style="text-align: left; min-width: 50vh;">
+          <div>
+            <h2 class="base-border">Login</h2>
+            <p>Entre com suas credenciais</p>
+
+            <div>
+
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="E-mail" type="text" name="email" required
+                  [(ngModel)]="entityLogin.username">
+              </mat-form-field>
+
+              <mat-form-field style="width: 100%" class="mb-1">
+                <input matInput placeholder="Senha" type="password" name="password" required
+                  [(ngModel)]="entityLogin.password">
+              </mat-form-field>
+
+              <div>
+                <button class="btn-login-margin mat-primary" mat-raised-button (click)="login()">ENTRAR</button>
+              </div>
+
+            </div>
+
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
