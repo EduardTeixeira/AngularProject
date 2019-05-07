@@ -1,5 +1,5 @@
-import { UserRoutingModule } from './user-routing.module';
 import { UserService } from './user.service';
+import { UserRoutingModule } from './user-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
@@ -9,13 +9,6 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 // Modal Component
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
-/*
-import { CurrencyMaskModule } from 'ng2-currency-mask';
-import { NgxMaskModule } from 'ngx-mask'
-import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { FlexLayoutModule } from '@angular/flex-layout';
-*/
 
 import {
   MatButtonModule,
@@ -33,26 +26,24 @@ import {
   MatInputModule,
   MatTabsModule,
   MatDatepickerModule,
-  MatRadioModule
+  MatRadioModule,
+  MatFormField,
+  MatFormFieldModule,
 } from '@angular/material';
 
 @NgModule({
   imports: [
     UserRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
     CommonModule,
-    /*
-FlexLayoutModule,
-ChartsModule,
-CurrencyMaskModule,
-NgxMaskModule.forRoot()
-    */
+    MatCardModule,
     FormsModule,
     ReactiveFormsModule,
     BsDropdownModule,
     MatButtonModule,
     MatDatepickerModule,
     MatButtonToggleModule,
-    MatCardModule,
     MatCheckboxModule,
     MatSelectModule,
     MatAutocompleteModule,
@@ -63,13 +54,13 @@ NgxMaskModule.forRoot()
     MatMenuModule,
     MatTableModule,
     MatTabsModule,
-    MatInputModule,
     MatRadioModule,
+    MatFormField,
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
   ],
   entryComponents: [],
   declarations: [UserComponent],
-  providers: []
+  providers: [UserService]
 })
 export class UserModule { }

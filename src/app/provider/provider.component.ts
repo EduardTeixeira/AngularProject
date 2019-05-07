@@ -28,15 +28,54 @@ export class ProviderComponent implements OnInit {
 
   }
 
-  public getProvider() {
+  public search() {
+
+    this.blockUI.start('Carregando...');
+
+    this._service.getProvider().subscribe(
+      (data: any[]) => {
+        if (data) {
+          this.entityProvider = data;
+        } else {
+          this.entityProvider = [];
+        }
+        this.blockUI.stop();
+      }
+    );
 
   }
 
-  public saveProvider() {
+  public saveProvider(item) {
+
+    this.blockUI.start('Carregando...');
+
+    this._service.saveProvider(item).subscribe(
+      data => {
+        this.search()
+        this.openSnackBar('Ação aplicada com sucesso.', 'Sucesso');
+        this.blockUI.stop();
+      },
+      error => {
+        this.openSnackBar('Não conseguimos aplicar a ação desejada. Estamos trabalhando pra resolver o problema.', 'Erro');
+        this.blockUI.stop();
+      });
 
   }
 
-  public deleteProvider() {
+  public deleteProvider(item) {
+
+    this.blockUI.start('Carregando...');
+
+    this._service.deleteProvider(item.id).subscribe(
+      data => {
+        this.search()
+        this.openSnackBar('Ação aplicada com sucesso.', 'Sucesso');
+        this.blockUI.stop();
+      },
+      error => {
+        this.openSnackBar('Não conseguimos aplicar a ação desejada. Estamos trabalhando pra resolver o problema.', 'Erro');
+        this.blockUI.stop();
+      });
 
   }
 

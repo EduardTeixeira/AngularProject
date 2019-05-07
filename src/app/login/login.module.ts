@@ -1,8 +1,9 @@
-import { ProviderRoutingModule } from './provider-routing.module';
-import { ProviderService } from './provider.service';
+import { UserService } from './../user/user.service';
+import { UserComponent } from './../user/user.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProviderComponent } from './provider.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 // Modal Component
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -29,15 +30,15 @@ import {
   MatFormFieldModule,
   MatToolbarModule,
 } from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { LoginComponent } from './login.component';
+import { LoginRoutingModule } from './login-routing.module';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from '../app-routing.module';
 
-
 @NgModule({
   imports: [
-    ProviderRoutingModule,
+    LoginRoutingModule,
+    MatFormField,
     MatFormFieldModule,
     MatInputModule,
     CommonModule,
@@ -59,14 +60,13 @@ import { AppRoutes } from '../app-routing.module';
     MatTableModule,
     MatTabsModule,
     MatRadioModule,
-    MatFormField,
-    TooltipModule.forRoot(),
-    ModalModule.forRoot(),
     MatToolbarModule,
+    ModalModule.forRoot(),
+    TooltipModule.forRoot(),
     RouterModule.forChild(AppRoutes),
   ],
   entryComponents: [],
-  declarations: [ProviderComponent],
-  providers: [ProviderService]
+  declarations: [LoginComponent],
+  providers: [UserService]
 })
-export class ProviderModule { }
+export class LoginModule { }

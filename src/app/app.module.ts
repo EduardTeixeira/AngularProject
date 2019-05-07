@@ -52,6 +52,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PlatformModule } from '@angular/cdk/platform';
 import { PortalModule } from '@angular/cdk/portal';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   exports: [
@@ -102,13 +104,19 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ProviderComponent,
     UserComponent,
-    ProductComponent
+    LoginComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+    MatCardModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
