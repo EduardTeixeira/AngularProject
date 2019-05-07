@@ -33,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from '../app-routing.module';
+import { ProviderDialog } from './provider-dialog';
 
 
 @NgModule({
@@ -65,8 +66,8 @@ import { AppRoutes } from '../app-routing.module';
     MatToolbarModule,
     RouterModule.forChild(AppRoutes),
   ],
-  entryComponents: [],
-  declarations: [ProviderComponent],
+  entryComponents: [ProviderComponent, ProviderDialog],
+  declarations: [ProviderComponent, ProviderDialog],
   providers: [ProviderService]
 })
 export class ProviderModule { }

@@ -15,14 +15,11 @@ export class LoginComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
 
   public entityLogin = <User>{};
-  public router: Router;
 
   constructor(
+    private router: Router,
     public snackBar: MatSnackBar,
-    public _service: UserService,
-    router: Router) {
-
-    this.router = router;
+    public _service: UserService) {
 
   }
 
@@ -38,13 +35,15 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data: User) => {
           if (data.id > 0) {
-            this.router.navigateByUrl('/provider');
+            //this.router.navigateByUrl('/user');
+            this.router.navigate(['layout']);
           } else {
             console.log("Permaneça na tela de login");
           }
           this.blockUI.stop();
         }
       );
+
 
   }
 

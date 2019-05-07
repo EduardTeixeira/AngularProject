@@ -1,3 +1,4 @@
+import { ProductDialog } from './product-dialog';
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
 import { ProductService } from './product.service';
@@ -64,8 +65,8 @@ import { AppRoutes } from '../app-routing.module';
     MatToolbarModule,
     RouterModule.forChild(AppRoutes),
   ],
-  entryComponents: [],
-  declarations: [ProductComponent],
+  entryComponents: [ProductComponent, ProductDialog],
+  declarations: [ProductComponent, ProductDialog],
   providers: [ProductService]
 })
 export class ProductModule { }

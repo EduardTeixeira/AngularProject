@@ -1,3 +1,4 @@
+import { ProductDialog } from './product/product-dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -54,6 +55,11 @@ import { PortalModule } from '@angular/cdk/portal';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { LayoutComponent } from './layout/layout.component';
+import { ProviderService } from './provider/provider.service';
+import { ProductService } from './product/product.service';
+import { ProviderDialog } from './provider/provider-dialog';
+import { UserDialog } from './user/user-dialog';
 
 @NgModule({
   exports: [
@@ -103,9 +109,13 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     ProviderComponent,
+    ProviderDialog,
     UserComponent,
+    UserDialog,
     LoginComponent,
     ProductComponent,
+    ProductDialog,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -117,8 +127,10 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatRippleModule,
     MatCardModule,
+    MatTableModule,
+    MatDialogModule,
   ],
-  providers: [UserService],
+  providers: [UserService, ProviderService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

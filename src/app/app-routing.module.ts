@@ -4,50 +4,30 @@ import { UserComponent } from './user/user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { CommonModule } from '@angular/common';
+import { LayoutComponent } from './layout/layout.component';
 
-const routes: Routes = [];
-
-/*
-export const AppRoutes: Routes = [
-  {
-    path: '',
-    component: LoginComponent
-  },
-  {
-    path: 'user',
-    component: UserComponent
-  },
-  {
-    path: 'provider',
-    component: ProviderComponent
-  },
-  {
-    path: 'product',
-    component: ProductComponent
-  }
+const routes: Routes = [
+  { path: 'user', component: UserComponent },
+  { path: 'provider', component: ProviderComponent },
+  { path: 'product', component: ProductComponent },
 ];
-*/
 
-export const AppRoutes: Routes = [{
-  path: '',
-  redirectTo: 'login',
-  pathMatch: 'full',
-}, {
-  path: '',
-  children: [{
-    path: 'user',
-    component: UserComponent
-  }, {
-    path: 'product',
-    component: ProductComponent
-  }, {
-    path: 'provider',
-    component: ProviderComponent
-  }]
-}];
+export const AppRoutes: Routes = [
+  { path: 'user', component: UserComponent },
+  { path: 'provider', component: ProviderComponent },
+  { path: 'product', component: ProductComponent },
+  { path: 'layout', component: LayoutComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo:'/login', pathMatch: 'full' },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [
+    RouterModule
+  ],
+  imports: [
+    RouterModule.forRoot(AppRoutes)
+  ]
 })
 export class AppRoutingModule { }

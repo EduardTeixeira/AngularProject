@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ModalDirective } from 'ngx-bootstrap';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { ProviderDialog } from './provider-dialog';
 
 @Component({
   selector: 'app-provider',
@@ -16,6 +17,7 @@ export class ProviderComponent implements OnInit {
   @ViewChild('modalCreate') public modalCreate: ModalDirective;
 
   public entityProvider: Provider[] = [];
+  displayedColumns: string[] = ['id', 'name', 'email', '#'];
 
   constructor(
     public snackBar: MatSnackBar,
@@ -25,6 +27,8 @@ export class ProviderComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.search();
 
   }
 
@@ -39,9 +43,27 @@ export class ProviderComponent implements OnInit {
         } else {
           this.entityProvider = [];
         }
+        console.log(data)
         this.blockUI.stop();
       }
     );
+
+  }
+
+  public editProvider() {
+
+    const dialogRef = this.dialog.open(ProviderDialog, {
+      width: '250px',
+      data: {
+        entity: this.entityProvider,
+        //edit: edit
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.search();
+    });
+
 
   }
 
